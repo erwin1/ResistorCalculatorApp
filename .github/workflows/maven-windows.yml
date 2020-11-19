@@ -26,7 +26,7 @@ jobs:
       - name: Make staging directory
         run: mkdir staging
       - name: Gluon Build
-        uses: gluonhq/gluon-build@v1
+        uses: erwin1/gluon-build@main
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           target: 'desktop'
