@@ -104,7 +104,7 @@
                     </attachList>
                     <mainClass>${mainClassName}</mainClass>
                     <releaseConfiguration>
-                        <bundleVersion>${env.GITHUB_RUN_ID}</bundleVersion>
+                        <bundleVersion>${env.GITHUB_RUN_NUMBER}</bundleVersion>
                         <skipSigning>${skipIOSSigning}</skipSigning>
                         <providedSigningIdentity>${env.IOS_SIGNING_IDENTITY}</providedSigningIdentity>
                         <providedProvisioningProfile>${env.IOS_PROVISIONING_PROFILE}</providedProvisioningProfile>
