@@ -45,7 +45,7 @@ jobs:
         GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
 
     - name: Copy native clients to staging
-      run: cp -r target/client/aarch64-android/gvm/Resistor Calculator.apk staging
+      run: cp -r target/client/aarch64-android/gvm/Resistor\ Calculator.apk staging
 
     - name: Upload
       uses: actions/upload-artifact@v2
