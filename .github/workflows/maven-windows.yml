@@ -31,6 +31,9 @@ jobs:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           target: 'desktop'
           Path: ${{ env.Path }}
+          PSModulePath: ${{ env.PSModulePath }}
+          LIBPATH: ${{ env.LIBPATH }}
+          LIB: ${{ env.LIB }}
 #      - name: Gluon Build
 #        run: mvn -DconsoleProcessLog=true -Pdesktop client:build client:package
 #        env:
