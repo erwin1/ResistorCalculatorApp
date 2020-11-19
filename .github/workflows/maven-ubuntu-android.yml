@@ -28,15 +28,16 @@ jobs:
       run: mkdir staging
     - name: setup android certs
       run: |
+          mkdir /home/runner/.gluon
           printf "${{ secrets.GLUON_ANDROID_KEYSTORE_BASE64 }}" > keystore.base64
-          base64 -d keystore.base64 > keystore
+          base64 -d keystore.base64 > /home/runner/.gluon/keystore
     - name: Gluon Build
       uses: gluonhq/gluon-build@v1
       with:
         gluon-license: ${{ secrets.GLUON_LICENSE }}
         target: 'android'
       env:
-        GLUON_ANDROID_KEYSTOREPATH: keystore
+        GLUON_ANDROID_KEYSTOREPATH: /home/runner/.gluon/keystore
         GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
         GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
         GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
