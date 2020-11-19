@@ -26,8 +26,6 @@ jobs:
       run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
     - name: Make staging directory
       run: mkdir staging
-    - name: Build JAR with Maven
-      run: mvn -B package
     - name: setup android certs
       run: |
           printf "${{ secrets.GLUON_ANDROID_KEYSTORE_BASE64 }}" > keystore.base64
