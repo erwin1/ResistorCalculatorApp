@@ -88,6 +88,7 @@
                 </configuration>
             </plugin>
 
+
             <plugin>
                 <groupId>com.gluonhq</groupId>
                 <artifactId>client-maven-plugin</artifactId>
