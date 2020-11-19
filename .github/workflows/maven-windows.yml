@@ -30,6 +30,7 @@ jobs:
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           target: 'desktop'
+
       - name: Copy native client to staging
         run: cp -r target/client/x86_64-windows/*.exe staging
       - name: Upload
