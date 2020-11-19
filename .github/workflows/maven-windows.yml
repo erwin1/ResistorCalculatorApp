@@ -30,10 +30,10 @@ jobs:
 #        with:
 #          gluon-license: ${{ secrets.GLUON_LICENSE }}
 #          target: 'desktop'
-    - run: mvn -DconsoleProcessLog=true -Pdesktop client:build client:package
-      env:
-        GRAALVM_HOME: ${{ env.JAVA_HOME }}
-
+      - name: Gluon Build
+        run: mvn -DconsoleProcessLog=true -Pdesktop client:build client:package
+        env:
+          GRAALVM_HOME: ${{ env.JAVA_HOME }}
       - name: Copy native client to staging
         run: cp -r target/client/x86_64-windows/*.exe staging
       - name: Upload
