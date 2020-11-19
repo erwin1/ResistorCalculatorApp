@@ -21,19 +21,14 @@ jobs:
           graalvm-version: 20.3.0.java11
       - name: Make staging directory
         run: mkdir staging
-      - name: Gluon Build
-        uses: erwin1/gluon-build@main
+      - name: Gluon License
+        uses: gluonhq/gluon-build-license@v1
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
-          target: 'desktop'
-          Path: ${{ env.Path }}
-          PSModulePath: ${{ env.PSModulePath }}
-          LIBPATH: ${{ env.LIBPATH }}
-          LIB: ${{ env.LIB }}
-#      - name: Gluon Build
-#        run: mvn -DconsoleProcessLog=true -Pdesktop client:build client:package
-#        env:
-#          GRAALVM_HOME: ${{ env.JAVA_HOME }}
+      - name: Gluon Build
+        run: mvn -Pdesktop client:build client:package
+        env:
+          GRAALVM_HOME: ${{ env.JAVA_HOME }}
       - name: Copy native client to staging
         run: cp -r target/client/x86_64-windows/*.exe staging
       - name: Upload
