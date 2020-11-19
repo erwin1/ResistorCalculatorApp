@@ -37,11 +37,10 @@ jobs:
       with:
         gluon-license: ${{ secrets.GLUON_LICENSE }}
         target: 'android'
-#      env:
-#        GLUON_ANDROID_KEYSTOREPATH: /home/runner/my.keystore
-#        GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
-#        GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
-#        GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
+        GLUON_ANDROID_KEYSTORE_BASE64: ${{ secrets.GLUON_ANDROID_KEYSTORE_BASE64 }}
+        GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
+        GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
+        GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
     - name: Copy native clients to staging
       run: cp -r target/client/aarch64-android/gvm/*.apk staging
     - name: Upload
