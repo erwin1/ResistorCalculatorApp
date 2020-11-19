@@ -30,14 +30,15 @@ jobs:
       run: mvn -B package
     - name: setup android certs
       run: |
-          base64 -d ${{ secrets.GLUON_ANDROID_KEYSTORE_BASE64 }} > gluon.keystore
+          printf "${{ secrets.GLUON_ANDROID_KEYSTORE_BASE64 }}" > keystore.base64
+          base64 -d keystore.base64 > keystore
     - name: Gluon Build
       uses: gluonhq/gluon-build@v1
       with:
         gluon-license: ${{ secrets.GLUON_LICENSE }}
         target: 'android'
       env:
-        GLUON_ANDROID_KEYSTOREPATH: gluon.keystore
+        GLUON_ANDROID_KEYSTOREPATH: keystore
         GLUON_ANDROID_KEYSTORE_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYSTORE_PASSWORD }}
         GLUON_ANDROID_KEYALIAS: ${{ secrets.GLUON_ANDROID_KEYALIAS }}
         GLUON_ANDROID_KEYALIAS_PASSWORD: ${{ secrets.GLUON_ANDROID_KEYALIAS_PASSWORD }}
